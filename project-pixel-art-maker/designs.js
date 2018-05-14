@@ -10,13 +10,12 @@ function makeGrid(x,y) {
     for(let i = 1; i<=x ; i++){
         $('#pixelCanvas').append(`<tr id = linha${i}></tr>`); //cria as linhas
         for(let j = 1; j<=y; j++){
-            $(`#linha${i}`).append("<td></td>"); //preenche as linhas
+            $(`#linha${i}`).append('<td></td>'); //preenche as linhas
         }
     }
 
     $('td').click(function(){
-      let color = $('#colorPicker').val(); // valor da cor 
-      $(event.target).css('background-color', color);
+      let color = $('#colorPicker').val(); // valor da cor no input 
+      $(this).css('background-color', color); //atribuiu o valor da cor no background do td
     });
-
 }
