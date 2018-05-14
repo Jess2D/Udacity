@@ -6,7 +6,7 @@ $('#sizePicker').submit(function(event){
 });
 
 function makeGrid(x,y) {
-    $('table tr').remove(); 
+    $('table tr').remove(); //apaga tabela anteriormente criada
     for(let i = 1; i<=x ; i++){
         $('#pixelCanvas').append(`<tr id = linha${i}></tr>`); //cria as linhas
         for(let j = 1; j<=y; j++){
