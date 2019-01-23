@@ -3,6 +3,7 @@ frontend-nanodegree-arcade-game
 F R O G G E R
 
 => Sobre o Projeto
+
     Este projeto trata-se de um clone de um fliperama classico desenvolvido em JavaScript.
 
 
