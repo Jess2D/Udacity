@@ -1,25 +1,32 @@
 // Inimigos que nosso jogador deve evitar
-var Enemy = function() {
-    // As variáveis aplicadas a nossas instâncias entram aqui.
-    // Fornecemos uma a você para que possa começcar.
-
-    // A imagem/sprite de nossos inimigos, isso usa um
-    // ajudante que é fornecido para carregar imagens
-    // com facilidade.
-    this.sprite = 'images/enemy-bug.png';
+var Enemy = function(x,y) {
+  this.sprite = 'images/enemy-bug.png';
+  this.x = x;
+  this.y = y;
+  this.speed = this.x * (Math.floor(Math.random() * 10));
 };
 
-// Atualize a posição do inimigo, método exigido pelo jogo
-// Parâmetro: dt, um delta de tempo entre ticks
+
+/* 
+  Parâmetro: dt, um delta de tempo entre ticks
+  Tratamento de colisões 
+*/
 Enemy.prototype.update = function(dt) {
-    // Você deve multiplicar qualquer movimento pelo parâmetro
-    // dt, o que garantirá que o jogo rode na mesma velocidade
-    // em qualquer computador.
+  this.x = this.x + this.speed * dt;
+  if(this.x > ctx.canvas.width) {
+    this.x = -100;
+  }
+
+  // Colisões com o jogador
+  if((this.x == player.x) && (this.y == player.y)) {
+    player.startingPosition();
+    score.lossScorre();
+  }
 };
 
 // Desenhe o inimigo na tela, método exigido pelo jogo
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Agora, escreva sua própria classe de jogador
@@ -36,12 +43,12 @@ Enemy.prototype.render = function() {
 // Isto reconhece cliques em teclas e envia as chaves para seu
 // jogador. método handleInput(). Não é preciso mudar nada.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  var allowedKeys = {
+      37: 'left',
+      38: 'up',
+      39: 'right',
+      40: 'down'
+  };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+  player.handleInput(allowedKeys[e.keyCode]);
 });
