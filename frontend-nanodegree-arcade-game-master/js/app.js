@@ -6,7 +6,6 @@ var Enemy = function(x,y) {
   this.speed = this.x * (Math.floor(Math.random() * 10));
 };
 
-
 /* 
   Parâmetro: dt, um delta de tempo entre ticks
   Tratamento de colisões 
@@ -29,6 +28,37 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+var Player  = function(){
+  this.sprite = 'images/char-princess-girl.png';
+  this.initialPosition();
+  sucess = 0;
+  loss = 0;
+}
+
+Player.prototype.initialPosition = function(){
+  this.x = 202; // col = 2, this.x = col * 101
+  this.y = 332; // row = 4, this.x = row * 83
+}
+
+Player.prototype.update = function (){
+  if(col<0){
+    this.col = 0;
+  }
+  if(col>4){
+    this.col = 4;
+  }
+
+  this.x = col * 101;
+  this.y = row * 83;
+
+  if(row == 0){
+    this.initialPosition();
+    this.sucess++;
+  }
+
+
+
+}
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
 // um render() e um handleInput().
