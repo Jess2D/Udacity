@@ -100,7 +100,21 @@ Player.prototype.update = function (){
     this.x = 2 * 101;
     this.y = 5 * 83;
   }
-
+  
+  var Score = function() {
+    this.victories = 0;
+    this.losses = 0;
+  };
+  
+  Score.prototype.victory = function() {
+    this.victories++;
+    document.getElementById('victories').innerHTML = this.victories;
+  };
+  
+  Score.prototype.loss = function() {
+    this.losses++;
+    document.getElementById('losses').innerHTML = this.losses;
+  };
 
 }
 // Agora, escreva sua própria classe de jogador
