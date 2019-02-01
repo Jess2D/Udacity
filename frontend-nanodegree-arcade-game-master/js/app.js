@@ -1,8 +1,8 @@
 /**
 * @description Represents the enemy.
 * @constructor
-* @param {number} x , that represent the x position of the enemy.
-* @param {number} y , that represent the y position of the enemy.
+* @param {number} x - that represent the x position of the enemy.
+* @param {number} y - that represent the y position of the enemy.
 */
 var Enemy = function(x,y) {
   this.sprite = 'images/enemy-bug.png';
@@ -13,7 +13,7 @@ var Enemy = function(x,y) {
 
 /**
 * @description Represents the enemy update.
-* @param {number} dt , that represent the dt, a time delta between ticks
+* @param {number} dt - that represent the dt, a time delta between ticks
 */
 Enemy.prototype.update = function(dt) {
   this.x += this.speed * dt;
@@ -89,7 +89,7 @@ Player.prototype.render = function() {
 }
 
 /**
-* @description Recognizes keys ←, ↑, ↓, →
+* @description Recognizes keys ←, →, ↑, ↓
 */
 Player.prototype.handleInput = function(key){
   switch(key) {
