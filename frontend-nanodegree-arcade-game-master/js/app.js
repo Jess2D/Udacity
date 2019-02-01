@@ -49,19 +49,27 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+/**
+* @description Represents the princess player.
+* @constructor
+*/
 var Player  = function(){
   this.sprite = 'images/char-princess-girl.png';
   this.x = 2 * 101;
   this.y = 5 * 83;
 }
 
+/**
+* @description Represents the player position update.
+*/
 Player.prototype.update = function() {
-
+  //Stop condition: arrival at the river. Player victory and the player reset the position.
   if(this.y === 0) {
     this.reset();
     score.victory();
   }
 
+  //Player can't move off screen
   if(this.x > 404){
     this.x = 404;
   }
@@ -70,15 +78,19 @@ Player.prototype.update = function() {
   }
   if(this.x < 0){
     this.x = 0;
-  }
-  
-
+  } 
 };
 
+/**
+* @description Draw the player on the screen
+*/
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+/**
+* @description Recognizes keys ←, ↑, ↓, →
+*/
 Player.prototype.handleInput = function(key){
   switch(key) {
     case 'left':
@@ -96,11 +108,18 @@ Player.prototype.handleInput = function(key){
   }
 };
 
+/**
+* @description Reset the player position, where the col= 2 and row= 5
+*/
 Player.prototype.reset = function(){
   this.x = 2 * 101;
   this.y = 5 * 83;
 }
 
+/**
+* @description Represents the score of player.
+* @constructor
+*/
 var Score = function() {
   this.victories = 0;
   this.losses = 0;
@@ -116,14 +135,10 @@ Score.prototype.loss = function() {
   document.getElementById('losses').innerHTML = this.losses;
 };
 
-// Agora, escreva sua própria classe de jogador
-// Esta classe exige um método update(), 
-// um render() e um handleInput().
+// Instantiate of the objects.
+// All enemy objects in an array [] allEnemies
+// Player object in a variable player
 
-
-// Represente seus objetos como instâncias.
-// Coloque todos os objetos inimgos numa array allEnemies
-// Coloque o objeto do jogador numa variável chamada jogador.
 var allEnemies = [];
 for(var i = 0; i < 3; i++) {
   allEnemies.push(new Enemy((i+1)*101, (i+1)*83));
@@ -131,10 +146,6 @@ for(var i = 0; i < 3; i++) {
 var player = new Player();
 var score = new Score();
 
-
-
-// Isto reconhece cliques em teclas e envia as chaves para seu
-// jogador. método handleInput(). Não é preciso mudar nada.
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
       37: 'left',
