@@ -30,9 +30,8 @@ Enemy.prototype.render = function() {
 
 var Player  = function(){
   this.sprite = 'images/char-princess-girl.png';
-  this.initialPosition();
-  sucess = 0;
-  loss = 0;
+  this.x = 2 * 101;
+  this.y = 5 * 83;
 }
 
 Player.prototype.initialPosition = function(){
@@ -56,6 +55,51 @@ Player.prototype.update = function (){
     this.sucess++;
   }
 
+
+  Player.prototype.update = function() {
+
+    if(this.y === 0) {
+      this.reset();
+      score.victory();
+    }
+  
+    if(this.x > 404){
+      this.x = 404;
+    }
+    if(this.y > 415){
+      this.y = 415;
+    }
+    if(this.x < 0){
+      this.x = 0;
+    }
+    
+  };
+  
+  Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+  
+  Player.prototype.handleInput = function(key){
+    switch(key) {
+      case 'left':
+        this.x = this.x - 101;
+        break;
+      case 'right':
+        this.x = this.x + 101;
+        break;
+      case 'up':
+      this.y = this.y - 83;
+        break;
+      case 'down':
+      this.y = this.y + 83;
+        break;
+    }
+  };
+  
+  Player.prototype.reset = function(){
+    this.x = 2 * 101;
+    this.y = 5 * 83;
+  }
 
 
 }
