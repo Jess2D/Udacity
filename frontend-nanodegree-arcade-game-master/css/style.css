@@ -1,16 +1,26 @@
 body {
     text-align: center;
+    color: #777E8C;
+    font-family: 'Lato', sans-serif;
+    line-height: 25px;
 }
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    border-top: 1px solid #e7e7e7;
-    background-color: #f8f8f8;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    color: #777;
-  }
+
+h1 {
+    font-weight: 500;
+    letter-spacing: 5px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+ul{
+    list-style-type: none;
+}
+.score{
+    color: #708090;
+    padding-top: 14px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#score-success{
+    padding-right: 74px;
+    
+}
