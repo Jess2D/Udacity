@@ -1,4 +1,9 @@
-// Inimigos que nosso jogador deve evitar
+/**
+* @description Represents the enemy.
+* @constructor
+* @param {number} x , that represent the x position of the enemy.
+* @param {number} y , that represent the y position of the enemy.
+*/
 var Enemy = function(x,y) {
   this.sprite = 'images/enemy-bug.png';
   this.x = x;
