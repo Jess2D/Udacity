@@ -100,7 +100,7 @@ Player.prototype.update = function (){
     this.x = 2 * 101;
     this.y = 5 * 83;
   }
-  
+
   var Score = function() {
     this.victories = 0;
     this.losses = 0;
@@ -117,19 +117,14 @@ Player.prototype.update = function (){
   };
 
 }
-// Agora, escreva sua própria classe de jogador
-// Esta classe exige um método update(), 
-// um render() e um handleInput().
 
+var allEnemies = [];
+for(var i = 0; i < 3; i++) {
+  allEnemies.push(new Enemy((i+1)*101, (i+1)*83));
+}
+var player = new Player();
+var score = new Score();
 
-// Represente seus objetos como instâncias.
-// Coloque todos os objetos inimgos numa array allEnemies
-// Coloque o objeto do jogador numa variável chamada jogador.
-
-
-
-// Isto reconhece cliques em teclas e envia as chaves para seu
-// jogador. método handleInput(). Não é preciso mudar nada.
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
       37: 'left',
