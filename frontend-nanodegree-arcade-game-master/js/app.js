@@ -11,9 +11,9 @@ var Enemy = function(x,y) {
   this.speed = this.x *  Math.floor(Math.random() * (5)) + 170;
 };
 
-/* 
-  Parâmetro: dt, um delta de tempo entre ticks
-  Tratamento de colisões 
+/**
+* @description Represents the enemy update.
+* @param {number} dt , that represent the dt, a time delta between ticks
 */
 Enemy.prototype.update = function(dt) {
   this.x += this.speed * dt;
@@ -21,6 +21,7 @@ Enemy.prototype.update = function(dt) {
     this.x = -101;   
   }
 
+  //Found x-x position 
   if (this.x < 0 && this.x < 101) {
     this.valueX = 0;
   } else if (this.x >=101 && this.x < 202) {
@@ -33,7 +34,7 @@ Enemy.prototype.update = function(dt) {
     this.valueX = 404;
   }
 
-  // Colisões com o jogador
+  // How to treat collisions with the player
   if (player.x === this.valueX && player.y === this.y) {
     player.reset();
     score.loss();
@@ -41,7 +42,9 @@ Enemy.prototype.update = function(dt) {
 
 };
 
-// Desenhe o inimigo na tela, método exigido pelo jogo
+/**
+* @description Draw the enemy on the screen
+*/
 Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
