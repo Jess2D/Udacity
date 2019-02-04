@@ -15,7 +15,7 @@ var Enemy = function(x,y) {
 * @description Represents the enemy update.
 * @param {number} dt - that represent the dt, a time delta between ticks
 */
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function(dt,player,score) {
   this.x += this.speed * dt;
   if(this.x > ctx.canvas.width) {
     this.x = -101;   
@@ -62,7 +62,7 @@ var Player  = function(){
 /**
 * @description Represents the player position update.
 */
-Player.prototype.update = function() {
+Player.prototype.update = function(score) {
   //Stop condition: arrival at the river. Player victory and the player reset the position.
   if(this.y === 0) {
     this.reset();
